@@ -1,4 +1,4 @@
-import * as http from 'http';
+﻿import * as http from 'http';
 import {IncomingMessage, ServerResponse} from 'http';
 
 const server = http.createServer();
@@ -26,6 +26,7 @@ server.on('request', (request: IncomingMessage, response: ServerResponse) => {
     request.on('end', () => {
         const requestBody = Buffer.concat(array).toString();
         // 这样是一小段一小段地上传，所以即使是上传很大的文件也会很轻松
+	// 上传的数据99%都是 Buffer
         console.log('requestBody');
         console.log(requestBody);
         response.end('hi');
